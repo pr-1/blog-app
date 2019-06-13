@@ -14,6 +14,26 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "paths": {
+      "@blog-modules/*": [
+        "src/app/modules/*"
+      ],
+      "@blog-services/*": [
+        "src/app/services/*"
+      ],
+      "@blog-models/*": [
+        "blog/app/models/*"
+      ],
+      "@blog-utils/*": [
+        "blog/app/utils/*"
+      ],
+      "@blog-environment/*": [
+        "src/environments/*"
+      ],
+      "@blog-app/*": [
+        "src/app/*"
+      ]
+    },
     "lib": [
       "es2018",
       "dom"

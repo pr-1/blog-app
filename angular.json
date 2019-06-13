@@ -5,6 +5,7 @@
   "projects": {
     "blog-app": {
       "projectType": "application",
+      "prefix": "blog",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
