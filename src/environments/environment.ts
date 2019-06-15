@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiBaseUrl: 'https://api-blog-app.herokuapp.com'
-  apiBaseUrl: 'http://localhost:5000'
+  apiBaseUrl: 'https://api-blog-app.herokuapp.com'
+  // apiBaseUrl: 'http://localhost:5000'
 };
 
 /*
