@@ -1,5 +1,10 @@
 <div class="container">
-  <ng-container *ngFor="let post of posts">
-    <blog-post-card [post]="post"></blog-post-card>
-  </ng-container>
+  <div class="post-list">
+    <blog-post-card *ngFor="let post of posts" [post]="post"></blog-post-card>
+  </div>
+  <div class="create-post">
+    <button mat-icon-button (click)="openCreatePostDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import {
   MatAutocompleteModule,
-  MatButtonModule,
+  MatButtonModule, MatButtonToggleModule,
   MatCardModule, MatCheckboxModule, MatDatepickerModule,
   MatDialogModule, MatFormFieldModule, MatIconModule,
   MatInputModule,
@@ -35,7 +35,7 @@ const materialModules = [
   // MatSnackBarModule,
   MatTabsModule,
   MatTooltipModule,
-  // MatButtonToggleModule,
+  MatButtonToggleModule,
   MatSidenavModule,
   MatSliderModule,
   MatDialogModule,

@@ -1,6 +1,27 @@
 .container {
-  display: flex;
   height: 100%;
   width: 100%;
-  justify-content: center;
+  .post-list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .create-post {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    button {
+      height: 60px;
+      width: 60px;
+      color: white;
+      background-color: blue;
+    .mat-icon {
+      font-size: 30px;
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
+    }
+    }
+  }
 }
