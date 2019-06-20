@@ -11,7 +11,7 @@ import {CoreModule} from '@blog-modules/core/core.module';
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

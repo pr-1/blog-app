@@ -3,6 +3,7 @@ import {Post} from '@blog-app/models/post.model';
 import {PostService} from '@blog-modules/posts/services/posts.service';
 import {MatDialog} from '@angular/material';
 import {CreatePostDialogComponent} from '@blog-modules/posts/dialogs/create-post/create-post-dialog.component';
+import { PostManager } from './managers/post.manager';
 
 @Component({
   selector: 'blog-posts',
@@ -11,9 +12,9 @@ import {CreatePostDialogComponent} from '@blog-modules/posts/dialogs/create-post
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
-  constructor(private postService: PostService, public dialog: MatDialog) {}
+  constructor(private _postManager: PostManager, public dialog: MatDialog) {}
   ngOnInit() {
-    this.postService.getPosts().subscribe((res) => {
+    this._postManager.fetchPosts().subscribe((res) => {
       this.posts = res;
     });
   }
