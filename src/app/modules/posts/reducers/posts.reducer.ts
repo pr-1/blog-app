@@ -33,6 +33,19 @@ export function postReducer(state = initialState, action: Action): PostState {
         isLoaded: true
       };
     }
+    case PostActionTypes.CREATE_POST: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case PostActionTypes.CREATE_POST_COMPLETE: {
+      return {
+        ...state,
+        ...postAdapter.addOne(action.payload, state),
+        isLoading: false
+      };
+    }
     default:
     return state;
   }

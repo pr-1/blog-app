@@ -12,8 +12,10 @@ import { PostManager } from './managers/post.manager';
 })
 export class PostsComponent implements OnInit {
   posts: Post[] = [];
+  isLoading = false;
   constructor(private _postManager: PostManager, public dialog: MatDialog) {}
   ngOnInit() {
+    this._postManager.getIsPostLoading().subscribe((res) => this.isLoading = res);
     this._postManager.fetchPosts().subscribe((res) => {
       this.posts = res;
     });
@@ -23,14 +25,15 @@ export class PostsComponent implements OnInit {
       width: '500px'
     });
 
-    dialogRef.afterClosed().subscribe((result: Post) => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed', result);
       if (!!result) {
         this.createPost(result);
       }
     });
   }
-  createPost(post: Post) {
+  createPost(post: any) {
+    this._postManager.createPost(post);
   }
   deletePost(id: string) {}
   updatePost(id: string, update: Partial<Post>) {}

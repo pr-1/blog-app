@@ -17,3 +17,12 @@ export class FetchPostComplete implements Action {
   readonly type = PostActionTypes.FETCH_POSTS_COMPLETE;
   constructor(public payload: Post[]) {}
 }
+
+export class CreatePostComplete implements Action {
+  readonly type = PostActionTypes.CREATE_POST_COMPLETE;
+  constructor(public payload: Post) {}
+}
+export class CreatePost implements Action {
+  readonly type = PostActionTypes.CREATE_POST;
+  constructor() {}
+}

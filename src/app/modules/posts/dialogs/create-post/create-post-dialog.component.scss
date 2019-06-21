@@ -1,0 +1,20 @@
+.create-post-container {
+  .header {
+    text-align: center;
+    color: blue;
+  }
+  .post-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+    .form-field {
+      margin: 10px;
+      &.submit-button {
+        align-self: flex-end;
+        color: white;
+        background-color: blue;
+      }
+    }
+  }
+}

@@ -8,4 +8,7 @@ export class PostService extends BlogApiService {
   getPosts(): Observable<Post[]> {
     return this.get('/posts', true);
   }
+  createPost(post): Observable<Post> {
+    return this.post('/posts', true, post);
+  }
 }

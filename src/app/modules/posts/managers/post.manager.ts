@@ -2,19 +2,28 @@ import { Injectable } from '@angular/core';
 import { PostRootState, getAllPosts, getIsPostLoading, getIsPostLoaded } from '../reducers/index.reducer';
 import { PostService } from '../services/posts.service';
 import { Post } from '@blog-app/models/post.model';
-import { FetchPost, FetchPostComplete } from '../actions/post.action';
+import {CreatePost, CreatePostComplete, FetchPost, FetchPostComplete} from '../actions/post.action';
 import { Store } from '@ngrx/store';
-import { combineLatest } from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import { take, map, filter, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class PostManager {
   constructor(private _store: Store<PostRootState>,
               private _postService: PostService) {}
+  // Store Selector Functions
+  getIsPostLoading(): Observable<boolean> {
+    return this._store.select(getIsPostLoading);
+  }
+  getIsPostLoaded(): Observable<boolean> {
+    return this._store.select(getIsPostLoaded);
+  }
 
-  fetchPosts(force = false) {
-    const isLoaded$ = this._store.select(getIsPostLoaded);
-    const isLoading$ = this._store.select(getIsPostLoading);
+  // Api requests
+
+  fetchPosts(force = false): Observable<Post[]> {
+    const isLoaded$ = this.getIsPostLoaded();
+    const isLoading$ = this.getIsPostLoading();
 
     combineLatest(isLoaded$, isLoading$).pipe(
       take(1),
@@ -30,5 +39,12 @@ export class PostManager {
     });
 
     return this._store.select(getAllPosts);
+  }
+  createPost(post) {
+    this._store.dispatch(new CreatePost());
+    this._postService.createPost(post).subscribe((res: Post) => {
+      console.log('post created is', res);
+      this._store.dispatch(new CreatePostComplete(res));
+    });
   }
 }

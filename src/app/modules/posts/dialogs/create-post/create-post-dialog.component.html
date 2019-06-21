@@ -1,1 +1,12 @@
-<p>This is create post dialog!</p>
+<div class="create-post-container">
+  <h3 class="header">Create Post</h3>
+  <form class="post-form" [formGroup]="createPostForm" (ngSubmit)= "onSubmit()">
+    <mat-form-field class="form-field" appearance="outline">
+      <input matInput placeholder="Title" autocomplete="off" [formControl]="title">
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <input matInput placeholder="Description" autocomplete="off" [formControl]="description">
+    </mat-form-field>
+    <button type="submit" class="form-field submit-button" mat-raised-button>Create Post</button>
+  </form>
+</div>
