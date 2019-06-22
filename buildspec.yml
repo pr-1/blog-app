@@ -5,9 +5,12 @@ phases:
       nodejs: 10
     commands:
     # Download and Install NodeJS 8.0
-    - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-    - sudo apt-get install -y nodejs
-    - npm i -g @angular/cli
+      - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
+      - echo Installing source NPM dependencies...
+      - sudo apt-get update -y
+      - sudo apt-get install -y apt-transport-https
+      - npm i -g @angular/cli
 
 build:
   commands:
