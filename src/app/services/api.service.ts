@@ -55,7 +55,10 @@ export abstract class ApiService {
       };
     }
     // @ts-ignore
-    return this.http.get<T>(useBaseUrl ? this.getBaseUrl() + url : url, options).pipe(catchError(err => this.handleError(err)));
+    return this.http.get<T>(useBaseUrl ? this.getBaseUrl() + url : url, options).pipe(catchError(err => {
+      console.log('base api url is ', this.getBaseUrl());
+      return this.handleError(err);
+    }));
   }
 
   post<T>(url: string, useAuthHeaders: boolean, data: any, headers?: HttpHeaders, useBaseUrl: boolean = true,

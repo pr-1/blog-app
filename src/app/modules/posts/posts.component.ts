@@ -17,6 +17,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this._postManager.getIsPostLoading().subscribe((res) => this.isLoading = res);
     this._postManager.fetchPosts().subscribe((res) => {
+      console.log('fetch posts subscribe');
       this.posts = res;
     });
   }

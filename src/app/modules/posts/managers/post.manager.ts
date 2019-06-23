@@ -36,6 +36,9 @@ export class PostManager {
     ).subscribe((posts: Post[]) => {
       console.log('post list is', posts);
       this._store.dispatch(new FetchPostComplete(posts));
+    }, (err) => {
+      console.log('error from backjend');
+      this._store.dispatch(new FetchPostComplete([]));
     });
 
     return this._store.select(getAllPosts);
