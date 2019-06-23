@@ -5,35 +5,35 @@ phases:
       nodejs: 10
     commands:
     # Download and Install NodeJS 8.0
-      - curl -sL https://deb.nodesource.com/setup_10.x
-      - apt-get install -y nodejs
-      - echo Installing source NPM dependencies...
-      - apt-get update -y
-      - apt-get install -y apt-transport-https
-      - npm i -g @angular/cli
+    - curl -sL https://deb.nodesource.com/setup_10.x
+    - apt-get install -y nodejs
+    - echo Installing source NPM dependencies...
+    - apt-get update -y
+    - apt-get install -y apt-transport-https
+    - npm i -g @angular/cli
 
-build:
-  commands:
-  - echo Installing source NPM dependencies...
-  - npm install
-  - echo Build started on `date`
-  - ng build --prod --configuration=${BUILD_ENV}
+  build:
+    commands:
+    - echo Installing source NPM dependencies...
+    - npm install
+    - echo Build started on `date`
+    - ng build --prod --configuration=${BUILD_ENV}
 
-post_build:
-  commands:
+  post_build:
+    commands:
   # Clear S3 bucket.
-  - aws s3 rm s3://${S3_BUCKET} --recursive
-  - echo S3 bucket is cleared.
-  - aws s3 cp dist s3://${S3_BUCKET} --recursive
-  - aws configure set preview.cloudfront true
-  - echo ${CLOUDFRONT_DISTRIBUTION_ID}
-  - echo ${BUILD_ENV}
-  - echo ${S3_BUCKET}
-  - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
-  - echo Build completed on `date`
+    - aws s3 rm s3://${S3_BUCKET} --recursive
+    - echo S3 bucket is cleared.
+    - aws s3 cp dist s3://${S3_BUCKET} --recursive
+    - aws configure set preview.cloudfront true
+    - echo ${CLOUDFRONT_DISTRIBUTION_ID}
+    - echo ${BUILD_ENV}
+    - echo ${S3_BUCKET}
+    - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
+    - echo Build completed on `date`
 
-artifacts:
-  files:
-  - '**/*'
-  discard-paths: yes
-  base-directory: 'dist*'
+  artifacts:
+    files:
+    - '**/*'
+    discard-paths: yes
+    base-directory: 'dist*'
