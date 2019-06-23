@@ -27,8 +27,8 @@ phases:
     - 'echo ${S3_BUCKET}'
     - 'aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths ''/*'''
     - 'echo Build completed on `date`'
-  artifacts:
-    files:
-      - '**/*'
-    discard-paths: yes
-    base-directory: 'dist*'
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: yes
+  base-directory: 'dist*'
