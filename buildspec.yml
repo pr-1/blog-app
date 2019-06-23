@@ -1,6 +1,6 @@
 version: 0.2
 phases:
-  install:
+install:
     runtime-versions:
       nodejs: 10
     commands:
@@ -11,17 +11,15 @@ phases:
     - apt-get update -y
     - apt-get install -y apt-transport-https
     - npm i -g @angular/cli
-
-  build:
+build:
     commands:
     - echo Installing source NPM dependencies...
     - npm install
     - echo Build started on `date`
     - ng build --prod --configuration=${BUILD_ENV}
 
-  post_build:
+post_build:           # Clear S3 bucket.
     commands:
-  # Clear S3 bucket.
     - aws s3 rm s3://${S3_BUCKET} --recursive
     - echo S3 bucket is cleared.
     - aws s3 cp dist s3://${S3_BUCKET} --recursive
@@ -32,7 +30,7 @@ phases:
     - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
     - echo Build completed on `date`
 
-  artifacts:
+artifacts:
     files:
     - '**/*'
     discard-paths: yes
