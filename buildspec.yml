@@ -30,5 +30,5 @@ phases:
 artifacts:
   base-directory: 'dist*'
   files:
-    - '/'
+    - '**/*'
   discard-paths: yes
