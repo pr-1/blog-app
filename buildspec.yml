@@ -15,7 +15,7 @@ phases:
     - 'echo Installing source NPM dependencies...'
     - 'npm install'
     - 'echo Build started on `date`'
-    - 'ng build --prod --configuration=${BUILD_ENV}'
+    - 'ng build --configuration=${BUILD_ENV}'
   post_build:
     commands:
     - 'aws s3 rm s3://${S3_BUCKET} --recursive'
@@ -30,5 +30,5 @@ phases:
 artifacts:
   base-directory: 'dist*'
   files:
-    - '**/*'
+    - '/'
   discard-paths: yes
