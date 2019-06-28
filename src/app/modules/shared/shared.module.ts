@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MaterialModule} from '@blog-modules/shared/material.module';
+import {HeaderComponent} from '@blog-modules/shared/components/header/header.component';
 
 const MODULES = [
   MaterialModule,
@@ -18,6 +19,7 @@ const DIRECTIVES = [
 ];
 
 const COMPONENTS = [
+  HeaderComponent
 ];
 
 @NgModule({

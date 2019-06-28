@@ -1,0 +1,13 @@
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  .login {
+    margin: 0 20px;
+    color: white;
+    background: #ED407E;
+  }
+}

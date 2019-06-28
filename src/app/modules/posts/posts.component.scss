@@ -1,10 +1,14 @@
 .container {
-  height: 100%;
+  height: calc(100% - 60px);
   width: 100%;
+  overflow: scroll;
+  justify-content: center;
+  display: flex;
+  background: #334466;
   .post-list {
     display: flex;
-    width: 100%;
-    flex-direction: column;
+    width: 95%;
+    flex-wrap: wrap;
     align-items: center;
   }
   .create-post {
@@ -15,7 +19,7 @@
       height: 60px;
       width: 60px;
       color: white;
-      background-color: blue;
+      background-color: #ED407E;
     .mat-icon {
       font-size: 28px;
       height: 28px;
