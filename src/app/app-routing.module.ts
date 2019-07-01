@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {PostsModule} from '@blog-modules/posts/posts.module';
+import {AppComponent} from '@blog-app/app.component';
 
 const routes: Routes = [
   { path: 'posts',
-    loadChildren: PostsModule
+    component: AppComponent,
+    loadChildren:
+      () => import('./modules/posts/posts.module')
+          .then((module) => module.PostsModule)
   },
   { path: '**', redirectTo: '/posts' }
 ];
