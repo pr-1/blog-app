@@ -28,6 +28,9 @@ import { PostManager } from './managers/post.manager';
   ],
   entryComponents: [
     CreatePostDialogComponent
+  ],
+  exports: [
+    PostsComponent
   ]
 })
 export class PostsModule { }

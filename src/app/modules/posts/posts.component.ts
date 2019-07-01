@@ -15,6 +15,7 @@ export class PostsComponent implements OnInit {
   isLoading = false;
   constructor(private _postManager: PostManager, public dialog: MatDialog) {}
   ngOnInit() {
+    console.log('posts ng oninit');
     this._postManager.getIsPostLoading().subscribe((res) => this.isLoading = res);
     this._postManager.fetchPosts().subscribe((res) => {
       console.log('fetch posts subscribe');

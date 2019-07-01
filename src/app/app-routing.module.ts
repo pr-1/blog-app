@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from '@blog-app/app.component';
+import {PostsComponent} from '@blog-modules/posts/posts.component';
+import {PostsModule} from '@blog-modules/posts/posts.module';
 
 const routes: Routes = [
   { path: '',
@@ -8,8 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-      loadChildren: () => import('./modules/posts/posts.module')
-                          .then((module) => module.PostsModule)
+        component: PostsComponent,
       }
     ]
   },
@@ -17,7 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), PostsModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
