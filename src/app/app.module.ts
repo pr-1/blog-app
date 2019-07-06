@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from '@blog-modules/core/core.module';
 import {SharedModule} from '@blog-modules/shared/shared.module';
+import {BlogApiService} from '@blog-services/blog-app-api.service';
 
 @NgModule({
   declarations: [

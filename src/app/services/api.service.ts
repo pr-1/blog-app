@@ -6,11 +6,12 @@ import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export abstract class ApiService {
-  constructor(protected http: HttpClient, protected router: Router) {
+  constructor(protected http: HttpClient) {
   }
 
   static getToken(): string {
-    return localStorage.getItem('auth_token');
+    // return localStorage.getItem('auth_token');
+    return 'token';
   }
 
   private static buildParams(data: any): HttpParams {
@@ -55,10 +56,7 @@ export abstract class ApiService {
       };
     }
     // @ts-ignore
-    return this.http.get<T>(useBaseUrl ? this.getBaseUrl() + url : url, options).pipe(catchError(err => {
-      console.log('base api url is ', this.getBaseUrl());
-      return this.handleError(err);
-    }));
+    return this.http.get<T>(this.getBaseUrl() + url, options);
   }
 
   post<T>(url: string, useAuthHeaders: boolean, data: any, headers?: HttpHeaders, useBaseUrl: boolean = true,
@@ -74,7 +72,7 @@ export abstract class ApiService {
       };
     }
     // @ts-ignore
-    return this.http.post<T>(useBaseUrl ? this.getBaseUrl() + url : url, data, options).pipe(catchError(err => this.handleError(err)));
+    return this.http.post<T>(useBaseUrl ? this.getBaseUrl() + url : url, data, options);
   }
 
   put<T>(url: string, useAuthHeaders: boolean, data: any, headers?: HttpHeaders, useBaseUrl: boolean = true, responseType?: string, withCredentials = false): Observable<T> {
@@ -89,7 +87,7 @@ export abstract class ApiService {
       };
     }
     // @ts-ignore
-    return this.http.put<T>(useBaseUrl ? this.getBaseUrl() + url : url, data, options).pipe(catchError(err => this.handleError(err)));
+    return this.http.put<T>(useBaseUrl ? this.getBaseUrl() + url : url, data, options);
   }
 
   delete<T>(url: string, useAuthHeaders: boolean, headers?: HttpHeaders, useBaseUrl: boolean = true,
@@ -105,7 +103,7 @@ export abstract class ApiService {
       };
     }
     // @ts-ignore
-    return this.http.delete<T>(useBaseUrl ? this.getBaseUrl() + url : url, options).pipe(catchError(err => this.handleError(err)));
+    return this.http.delete<T>(useBaseUrl ? this.getBaseUrl() + url : url, options);
   }
   public handleError(httpErrorResponse: HttpErrorResponse) {
     return throwError({ error: 'Error Occurred'});

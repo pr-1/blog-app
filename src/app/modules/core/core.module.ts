@@ -17,7 +17,6 @@ import { reducers } from './reducers/index.reducer';
     ToastrModule.forRoot()
   ],
   providers: [
-    BlogApiService
   ],
   bootstrap: []
 })
