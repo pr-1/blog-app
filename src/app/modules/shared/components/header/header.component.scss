@@ -1,13 +1,17 @@
 .header {
-  height: 60px;
+  min-height: 60px;
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 5px;
   background-color: black;
   color: white;
-  .login {
-    margin: 0 20px;
-    color: white;
-    background: #ED407E;
+  .actions {
+    .login {
+      margin: 0 0.5rem;
+      color: white;
+      background: #ED407E;
+    }
   }
 }

@@ -3,4 +3,12 @@
   min-width: 250px;
   width: 20vw;
   height: 400px;
+  .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    line-height: 20px;
+    max-height: 120px;
+  }
 }
