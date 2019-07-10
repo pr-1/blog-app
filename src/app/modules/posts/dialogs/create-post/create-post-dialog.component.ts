@@ -21,6 +21,10 @@ export class CreatePostDialogComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.matDialogRef.close(this.createPostForm.value);
+    if (this.createPostForm.valid) {
+      this.matDialogRef.close(this.createPostForm.value);
+    } else {
+      this.matDialogRef.close(null);
+    }
   }
 }

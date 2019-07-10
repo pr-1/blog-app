@@ -7,8 +7,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 18;
+    line-break: strict;
     line-height: 20px;
-    max-height: 120px;
+    max-height: 380px;
   }
 }
