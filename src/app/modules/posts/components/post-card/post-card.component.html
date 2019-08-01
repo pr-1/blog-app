@@ -2,6 +2,9 @@
   <mat-card-content>
     <h3>{{post.title}}</h3>
     <p class="description">{{post.description}}</p>
-
+    <div class="actions">
+      <button mat-icon-button><mat-icon>edit</mat-icon></button>
+      <button (click)="delete()" mat-icon-button><mat-icon>delete</mat-icon></button>
+    </div>
   </mat-card-content>
 </mat-card>

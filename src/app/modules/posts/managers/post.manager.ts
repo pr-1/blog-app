@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PostRootState, getAllPosts, getIsPostLoading, getIsPostLoaded } from '../reducers/index.reducer';
 import { PostService } from '../services/posts.service';
 import { Post } from '@blog-app/models/post.model';
-import {CreatePost, CreatePostComplete, FetchPost, FetchPostComplete} from '../actions/post.action';
+import {CreatePost, CreatePostComplete, DeletePost, FetchPost, FetchPostComplete} from '../actions/post.action';
 import { Store } from '@ngrx/store';
 import {combineLatest, Observable} from 'rxjs';
 import { take, map, filter, switchMap } from 'rxjs/operators';
@@ -48,6 +48,13 @@ export class PostManager {
     this._postService.createPost(post).subscribe((res: Post) => {
       console.log('post created is', res);
       this._store.dispatch(new CreatePostComplete(res));
+    });
+  }
+  deletePost(id: string) {
+    this._postService.deletePost(id).subscribe((res) => {
+      if (res.success) {
+        this._store.dispatch(new DeletePost(id));
+      }
     });
   }
 }

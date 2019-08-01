@@ -37,6 +37,8 @@ export class PostsComponent implements OnInit {
   createPost(post: any) {
     this._postManager.createPost(post);
   }
-  deletePost(id: string) {}
+  deletePost(id: string) {
+    this._postManager.deletePost(id);
+  }
   updatePost(id: string, update: Partial<Post>) {}
 }

@@ -15,4 +15,7 @@ export class PostService extends BlogApiService {
   createPost(post): Observable<Post> {
     return this.post('/posts', true, post);
   }
+  deletePost(id): Observable<{success: boolean}> {
+    return this.delete(`/posts/${id}`, true);
+  }
 }

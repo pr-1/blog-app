@@ -7,9 +7,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 18;
+    -webkit-line-clamp: 17;
     line-break: strict;
     line-height: 20px;
-    max-height: 380px;
+    max-height: 320px;
+  }
+  .actions {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    button {
+      color: white;
+      background-color: #334466;
+      margin: 0 5px;
+    }
   }
 }

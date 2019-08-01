@@ -46,6 +46,11 @@ export function postReducer(state = initialState, action: Action): PostState {
         isLoading: false
       };
     }
+    case PostActionTypes.DELETE_POST: {
+      return {
+        ...postAdapter.removeOne(action.payload, state)
+      };
+    }
     default:
     return state;
   }

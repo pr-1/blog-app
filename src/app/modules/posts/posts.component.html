@@ -1,7 +1,9 @@
 <blog-header></blog-header>
 <div class="container">
   <div class="post-list">
-    <blog-post-card *ngFor="let post of posts" [post]="post"></blog-post-card>
+    <ng-container *ngFor="let post of posts">
+      <blog-post-card [post]="post" (deletePost)="deletePost(post._id)"></blog-post-card>
+    </ng-container>
   </div>
   <div class="create-post">
     <button mat-icon-button (click)="openCreatePostDialog()">

@@ -5,7 +5,8 @@ export enum PostActionTypes {
   FETCH_POSTS = '[Post] Fetch Posts',
   FETCH_POSTS_COMPLETE = '[Post] Fetch Posts Complete',
   CREATE_POST = '[Post] Create Post',
-  CREATE_POST_COMPLETE = '[Post] Create Post Complete'
+  CREATE_POST_COMPLETE = '[Post] Create Post Complete',
+  DELETE_POST = '[Post] Delete Post'
 }
 
 export class FetchPost implements Action {
@@ -25,4 +26,10 @@ export class CreatePostComplete implements Action {
 export class CreatePost implements Action {
   readonly type = PostActionTypes.CREATE_POST;
   constructor() {}
+}
+
+export class DeletePost implements Action {
+  readonly type = PostActionTypes.DELETE_POST;
+  // Payload is id
+  constructor(public payload: string) {}
 }
